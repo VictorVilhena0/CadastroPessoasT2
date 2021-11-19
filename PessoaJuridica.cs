@@ -1,3 +1,5 @@
+using System;
+
 namespace CadastroPessoas
 {
     public class PessoaJuridica : Pessoa
@@ -10,7 +12,7 @@ namespace CadastroPessoas
         }
         public override float PagarImposto(float rendimento)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
