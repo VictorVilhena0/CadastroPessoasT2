@@ -1,12 +1,16 @@
 namespace CadastroPessoas
 {
-    public class PessoaJuridica
+    public class PessoaJuridica : Pessoa
     {
         public string cnpj {get; set;}
         public string razaoSocial {get; set;}
-        public float PagarImposto(float rendimento)
+        public bool ValidarCnpj(string cnpj)
         {
-            return 0;
+            return true;
+        }
+        public override float PagarImposto(float rendimento)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

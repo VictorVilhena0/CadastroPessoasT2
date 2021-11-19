@@ -2,13 +2,17 @@ using System;
 
 namespace CadastroPessoas
 {
-    public class PessoaFisica
+    public class PessoaFisica : Pessoa
     {
         public string cpf {get; set;}
         public DateTime dataNascimento {get; set;}
-        public float PagarImposto(float rendimento)
+        public bool ValidarNascimento(DateTime dataNasc)
         {
-            return 0;
+            return true;
+        }
+        public override float PagarImposto(float rendimento)
+        {
+            throw new NotImplementedException();
         }
     }
 }
