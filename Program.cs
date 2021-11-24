@@ -8,10 +8,9 @@ namespace CadastroPessoas
         {
             PessoaJuridica novaPj = new PessoaJuridica();
             novaPj.nome = "Jen";
-            novaPj.endereco = "Rua Spetsnaz";
             novaPj.razaoSocial = "Companhia de Conserto de Aparelhos Eletrônicos";
             
-            Console.WriteLine($"Nome: {novaPj.nome}\nEndereço: {novaPj.endereco}\nRazão Social: {novaPj.razaoSocial}\n");
+            Console.WriteLine($"Nome: {novaPj.nome}\nRazão Social: {novaPj.razaoSocial}\n");
 
             PessoaFisica novaPf = new PessoaFisica();
             novaPf.nome = "Jeff";

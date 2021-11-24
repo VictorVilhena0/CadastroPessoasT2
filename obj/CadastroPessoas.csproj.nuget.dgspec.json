@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\victo\\Documents\\Trabalhos\\Códigos\\CadastroPessoas\\CadastroPessoas.csproj": {}
+    "C:\\Users\\victo\\Documents\\Trabalhos\\Códigos\\CadastroPessoasT2\\CadastroPessoas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\victo\\Documents\\Trabalhos\\Códigos\\CadastroPessoas\\CadastroPessoas.csproj": {
+    "C:\\Users\\victo\\Documents\\Trabalhos\\Códigos\\CadastroPessoasT2\\CadastroPessoas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\victo\\Documents\\Trabalhos\\Códigos\\CadastroPessoas\\CadastroPessoas.csproj",
+        "projectUniqueName": "C:\\Users\\victo\\Documents\\Trabalhos\\Códigos\\CadastroPessoasT2\\CadastroPessoas.csproj",
         "projectName": "CadastroPessoas",
-        "projectPath": "C:\\Users\\victo\\Documents\\Trabalhos\\Códigos\\CadastroPessoas\\CadastroPessoas.csproj",
+        "projectPath": "C:\\Users\\victo\\Documents\\Trabalhos\\Códigos\\CadastroPessoasT2\\CadastroPessoas.csproj",
         "packagesPath": "C:\\Users\\victo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\victo\\Documents\\Trabalhos\\Códigos\\CadastroPessoas\\obj\\",
+        "outputPath": "C:\\Users\\victo\\Documents\\Trabalhos\\Códigos\\CadastroPessoasT2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\victo\\AppData\\Roaming\\NuGet\\NuGet.Config",
