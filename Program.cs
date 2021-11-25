@@ -6,17 +6,28 @@ namespace CadastroPessoas
     {
         static void Main(string[] args)
         {
-            PessoaJuridica novaPj = new PessoaJuridica();
-            novaPj.nome = "Jen";
-            novaPj.razaoSocial = "Companhia de Conserto de Aparelhos Eletrônicos";
-            
-            Console.WriteLine($"Nome: {novaPj.nome}\nRazão Social: {novaPj.razaoSocial}\n");
-
+            PessoaFisica pfMetodos = new PessoaFisica();
             PessoaFisica novaPf = new PessoaFisica();
-            novaPf.nome = "Jeff";
-            novaPf.cpf = "5637.3526.25"; //este número é só para exemplo
+            Endereco novoEnde = new Endereco();
 
-            Console.WriteLine($"Nome: {novaPf.nome}\nCPF: {novaPf.cpf}");
+            novaPf.nome = "Jeff";
+            novaPf.cpf = "347854738";
+            novaPf.dataNascimento = new DateTime(2009,4,3);
+            novaPf.rendimento = 4587.1f;
+
+            novaPf.endereco = novoEnde;
+            novaPf.endereco.logradouro = "Abacaxi Verde da Costa";
+            novaPf.endereco.numero = 548;
+            novaPf.endereco.complemento = "Casa";
+            novaPf.endereco.enderecoComercial = false;
+            
+            Console.WriteLine(@$"
+Nome: {novaPf.nome}
+CPF: {novaPf.cpf}
+Endereço: {novaPf.endereco.logradouro}, {novaPf.endereco.numero}
+Complemento: {novaPf.endereco.complemento}
+            ");
+            Console.WriteLine($"{pfMetodos.ValidarNascimento(novaPf.dataNascimento)}");
         }
     }
 }

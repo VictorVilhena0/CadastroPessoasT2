@@ -8,7 +8,17 @@ namespace CadastroPessoas
         public DateTime dataNascimento {get; set;}
         public bool ValidarNascimento(DateTime dataNasc)
         {
-            return true;
+            DateTime dataAtual = DateTime.Today;
+            double anos = (dataAtual - dataNasc).TotalDays / 365;
+
+            Console.WriteLine($"{anos}");
+
+            if(anos >= 18)
+            {
+                return true;
+            }
+            
+            return false;
         }
         public override float PagarImposto(float rendimento)
         {
