@@ -8,7 +8,12 @@ namespace CadastroPessoas
         public string razaoSocial {get; set;}
         public bool ValidarCnpj(string cnpj)
         {
-            return true;
+            if (cnpj.Length == 14 && cnpj.Substring(8, 4) == "0001")
+            {
+                return true;
+            }
+
+            return false;
         }
         public override float PagarImposto(float rendimento)
         {
