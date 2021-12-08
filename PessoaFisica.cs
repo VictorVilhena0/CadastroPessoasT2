@@ -11,7 +11,7 @@ namespace CadastroPessoas
             DateTime dataAtual = DateTime.Today;
             double anos = (dataAtual - dataNasc).TotalDays / 365;
 
-            Console.WriteLine($"{anos}");
+            Console.WriteLine($"\nIdade: {anos}");
 
             if(anos >= 18)
             {
