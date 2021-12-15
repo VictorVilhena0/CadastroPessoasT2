@@ -17,7 +17,26 @@ namespace CadastroPessoas
         }
         public override float PagarImposto(float rendimento)
         {
-            throw new NotImplementedException();
+            if(rendimento <= 3000)
+            {
+                float taxa = (rendimento/100) * 3;
+                return taxa;
+            }
+            else if(rendimento > 3000 && rendimento <= 6000)
+            {
+                float taxa = (rendimento/100) * 5;
+                return taxa;
+            }
+            else if(rendimento > 6000 && rendimento <= 10000)
+            {
+                float taxa = (rendimento/100) * 7;
+                return taxa;
+            }
+            else
+            {
+                float taxa = (rendimento/100) * 9;
+                return taxa;
+            }
         }
     }
 }

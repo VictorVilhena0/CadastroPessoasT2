@@ -54,8 +54,8 @@ namespace CadastroPessoas
 
                     novaPf.nome = "Jeff";
                     novaPf.cpf = "347854738";
-                    novaPf.dataNascimento = new DateTime(2009,4,3);
-                    novaPf.rendimento = 4587.1f;
+                    novaPf.dataNascimento = new DateTime(2000,4,3);
+                    novaPf.rendimento = 2478.4f;
 
                     novaPf.endereco = novoEndePf;
                     novaPf.endereco.logradouro = "Abacaxi Verde da Costa";
@@ -68,7 +68,8 @@ Nome: {novaPf.nome}
 CPF: {novaPf.cpf}
 Endereço: {novaPf.endereco.logradouro}, {novaPf.endereco.numero}
 Complemento: {novaPf.endereco.complemento}
-Validação data de nascimento: {pfMetodos.ValidarNascimento(novaPf.dataNascimento)}
+Validação data de nascimento: {(pfMetodos.ValidarNascimento(novaPf.dataNascimento) ? "Maior de 18 anos" : "Menor de 18 anos")}
+Taxa de Imposto: {pfMetodos.PagarImposto(novaPf.rendimento).ToString("C")}
                     ");
 
                     Thread.Sleep(3000);
@@ -98,7 +99,8 @@ Nome: {novaPj.nome}
 CNPJ: {novaPj.cnpj}
 Razão Social: {novaPj.razaoSocial}
 Endereço: {novaPj.endereco.logradouro}, {novaPj.endereco.numero}
-Validação CNPJ: {pjMetodos.ValidarCnpj(novaPj.cnpj)}
+Validação CNPJ: {(pjMetodos.ValidarCnpj(novaPj.cnpj) ? "Válido" : "Inválido")}
+Taxa de Imposto: {pjMetodos.PagarImposto(novaPj.rendimento).ToString("C")}
                     ");
 
                     Thread.Sleep(3000);
