@@ -1,5 +1,9 @@
 # __Sistema de cadastro__
 
+## __Versão 1.0.4__
+- ### Lista criada para pessoa Física e Jurídica
+- ### Sistema de cadastro criado para pessoa Física e Jurídica 
+---
 ## __Versão 1.0.3__
 - ### Criado o método de pagar imposto para pessoa Física e Jurídica
 ---
