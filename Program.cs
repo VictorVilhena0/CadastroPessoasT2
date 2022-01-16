@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Collections.Generic;
+using System.IO;
 
 namespace CadastroPessoas
 {
@@ -50,7 +51,6 @@ namespace CadastroPessoas
             switch(opcao)
             {
                 case "1":
-
                     string opcaoPf;
                     PessoaFisica pfMetodos = new PessoaFisica();
 
@@ -85,8 +85,18 @@ namespace CadastroPessoas
                             novaPf.nome = Console.ReadLine();
                             Console.Clear();
 
+                            do
+                            {
+                            Console.Clear();
                             Console.WriteLine("Digite o seu CPF:");
                             novaPf.cpf = Console.ReadLine();
+                            if(novaPf.cpf.Length < 11 || novaPf.cpf.Length > 11)
+                            {
+                                Console.WriteLine("CPF inválido. Por favor tente novamente.");
+                                Thread.Sleep(3000);
+                            }
+                            }while(novaPf.cpf.Length != 11);
+
                             Console.Clear();
 
                             bool dataValida;
@@ -108,8 +118,9 @@ namespace CadastroPessoas
                                 Thread.Sleep(2500);
                                 Console.ResetColor();
                                 Console.Clear();
+                            }                            
                             }
-                            }while(dataValida == false);
+                            while(dataValida == false);
 
                             Console.Clear();
 
@@ -130,7 +141,7 @@ namespace CadastroPessoas
                             novaPf.endereco.complemento = Console.ReadLine();
                             Console.Clear();
                             
-                            Console.WriteLine("Se o seu endereço é comercial, digite" + " S, " + "caso contrário," + "N");
+                            Console.WriteLine("Se o seu endereço é comercial, digite" + " S, " + "caso contrário, " + "N");
                             string opcaoComercial = Console.ReadLine().ToUpper();
 
                             if(opcaoComercial == "S")
@@ -144,25 +155,38 @@ namespace CadastroPessoas
 
                             listaPf.Add(novaPf);
 
+                            using (StreamWriter sw = new StreamWriter($"{novaPf.nome}.txt"))//Vai criar um arquivo "txt" na raíz do projeto (Pessoa Física)
+                            {
+                                sw.Write($"Nome: {novaPf.nome}");
+                            }
+
+                            pfMetodos.VerificarPastaArquivo(pfMetodos.caminhoPf);
+                            pfMetodos.InserirPf(novaPf);
                         break;
             
                         case "2":
                             Console.Clear();
                             
-                            foreach(PessoaFisica cadaItem in listaPf)
+                            List<PessoaFisica> listaPF = pfMetodos.Ler();
+
+                            if(listaPF.Count > 0)
                             {
-                                Console.WriteLine(@$"
-Nome: {cadaItem.nome}
-CPF: {cadaItem.cpf}
-Endereço: {cadaItem.endereco.logradouro}, {cadaItem.endereco.numero}
-Complemento: {cadaItem.endereco.complemento}
-Validação data de nascimento: {(pfMetodos.ValidarNascimento(cadaItem.dataNascimento) ? "Maior de 18 anos" : "Menor de 18 anos")}
-Taxa de Imposto: {pfMetodos.PagarImposto(cadaItem.rendimento).ToString("C")}
-                                ");
+                                foreach(PessoaFisica cadaPf in listaPF)
+                                {
+                                    Console.WriteLine(@$"
+Nome: {cadaPf.nome}
+CPF: {cadaPf.cpf}
+");
+                                    Thread.Sleep(3500);
+                                }
                             }
-                            
-                            Thread.Sleep(3500);
-                            Console.Clear();
+                            else
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Lista vazia.");
+                                Thread.Sleep(3500);
+                            }
                         break;
 
                         case "3":
@@ -175,9 +199,9 @@ Taxa de Imposto: {pfMetodos.PagarImposto(cadaItem.rendimento).ToString("C")}
                             Thread.Sleep(600);
                             Console.Clear();
                         break;
+                    }                  
                     }
-                    
-                    }while(opcaoPf != "3");
+                    while(opcaoPf != "3");
                     
                 break; //esse "break" serve para quebrar o case "1" do switch(opcao)
 
@@ -238,8 +262,9 @@ Taxa de Imposto: {pfMetodos.PagarImposto(cadaItem.rendimento).ToString("C")}
                                     Thread.Sleep(3000);
                                     Console.ResetColor();
                                     Console.Clear();
-                                }
-                            }while(cnpjValido == false);
+                                }                           
+                            }
+                            while(cnpjValido == false);                           
                             
                             Console.Clear();
 
@@ -267,24 +292,40 @@ Taxa de Imposto: {pfMetodos.PagarImposto(cadaItem.rendimento).ToString("C")}
                             novaPj.endereco.enderecoComercial = true;
 
                             listaPj.Add(novaPj);
+
+                            using (StreamWriter sw = new StreamWriter($"{novaPj.nome}.txt"))//Vai criar um arquivo "txt" na raíz do projeto (Pessoa Jurídica)
+                            {
+                                sw.Write($"Nome: {novaPj.nome}");
+                            }
+
+                            pjMetodos.VerificarPastaArquivo(pjMetodos.caminhoPj);
+                            pjMetodos.InserirPj(novaPj);
                         break;
 
                         case "2":
                             Console.Clear();
 
-                            foreach(PessoaJuridica cadaItem in listaPj)
+                            List<PessoaJuridica> listaPJ = pjMetodos.Ler();
+
+                            if(listaPJ.Count > 0)
                             {
-                            Console.WriteLine(@$"
-Nome: {cadaItem.nome}
-CNPJ: {cadaItem.cnpj}
-Razão Social: {cadaItem.razaoSocial}
-Endereço: {cadaItem.endereco.logradouro}, {cadaItem.endereco.numero}
-Validação CNPJ: {(pjMetodos.ValidarCnpj(cadaItem.cnpj) ? "Válido" : "Inválido")}
-Taxa de Imposto: {pjMetodos.PagarImposto(cadaItem.rendimento).ToString("C")}
-                            ");
+                                foreach(PessoaJuridica cadaPj in listaPJ)
+                                {
+                                    Console.WriteLine(@$"
+Nome: {cadaPj.nome}
+CNPJ: {cadaPj.cnpj}
+Razão social: {cadaPj.razaoSocial}
+");
+                                    Thread.Sleep(3500);
+                                }
                             }
-                            Thread.Sleep(3500);
-                            Console.Clear();
+                            else
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Lista vazia.");
+                                Thread.Sleep(3500);
+                            }
                         break;
 
                         case "3":
@@ -298,9 +339,9 @@ Taxa de Imposto: {pjMetodos.PagarImposto(cadaItem.rendimento).ToString("C")}
                             Console.Clear();
                         break;
 
+                    }                    
                     }
-                    
-                    }while(opcaoPj != "3");
+                    while(opcaoPj != "3");
                 
                 break; //esse "break" serve para quebrar o case "2" do switch(opcao)
 
@@ -314,9 +355,9 @@ Taxa de Imposto: {pjMetodos.PagarImposto(cadaItem.rendimento).ToString("C")}
                     Thread.Sleep(2500);
                     Console.Clear();
                 break;
+            }                        
             }
-            
-            }while(opcao != "3");
+            while(opcao != "3");
         }
 
         static void BarraCarregamento(string textoCarregar)

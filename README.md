@@ -1,5 +1,9 @@
 # __Sistema de cadastro__
 
+## __Versão 1.0.5__
+- ### Os dados agora serão salvos em um arquivo
+ 1. Dois arquivos serão separados dentro da pasta Database: PessoaFisica.csv e PessoaJuridica.csv 
+---
 ## __Versão 1.0.4__
 - ### Lista criada para pessoa Física e Jurídica
 - ### Sistema de cadastro criado para pessoa Física e Jurídica 
@@ -19,4 +23,3 @@
 ## __Versão 1.0.0__
 - ### Classe "Endereco" criado
 - ### Criado método para validar nascimento para pessoa física
-
